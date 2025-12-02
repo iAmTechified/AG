@@ -1,0 +1,68 @@
+.hero-carousel-container {
+  position: relative;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: white;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-buttons .lucide {
+  color: white;
+}
+
+/* Fade animation for carousel */
+.embla-fade .embla__slide {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.embla-fade .embla__slide.is-selected {
+  opacity: 1;
+}
+
+/* Fade-up animation for content */
+.fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
