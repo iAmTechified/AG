@@ -54,12 +54,12 @@ export default function PastoralGreeting() {
                         <div className="absolute -inset-4 bg-gradient-to-tr from-brand-gold/20 to-primary/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
 
                         {/* Image Container */}
-                        <div className="relative aspect-[6/7] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform transition-transform duration-700 group-hover:scale-[1.02]">
+                        <div className="bg-secondary relative aspect-[6/7] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform transition-transform duration-700 group-hover:scale-[1.02]">
                             <Image
                                 src="/IMG5.jpg"
                                 alt="Pastor Greeting"
                                 fill
-                                className="object-cover object-top"
+                                className="object-cover object-top opacity-88"
                                 priority
                             />
 

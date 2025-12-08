@@ -1,3 +1,4 @@
+import PageHero from '@/components/shared/page-hero'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
@@ -6,16 +7,12 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-primary to-primary/90 text-primary-foreground py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-lg opacity-90">
-            We'd love to hear from you. Reach out anytime.
-          </p>
-        </div>
-      </section>
+
+      <PageHero
+        title="Get in Touch"
+        subtitle="We'd love to hear from you. Reach out anytime."
+        className="min-h-[70vh] md:min-h-[70vh]"
+      />
 
       {/* Content */}
       <section className="py-16 md:py-24">

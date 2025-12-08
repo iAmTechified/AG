@@ -81,7 +81,7 @@ export default function AboutPage() {
           <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-white rounded-full opacity-30 animate-float-medium" />
         </div>
 
-        <div className="relative z-20 text-left mt-20 mb-10 mx-auto w-[90%] p-20">
+        <div className="relative z-20 text-left mt-20 mb-10 mx-auto w-[90%] p-5 md:p-20">
           <h1 className="font-serif text-7xl md:text-7xl font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             About Us <br />
           </h1>

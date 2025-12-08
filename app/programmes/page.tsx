@@ -146,6 +146,8 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
       })
     }, 1000)
 
+    console.log("TIme left:", timeLeft);
+
     return () => clearInterval(interval)
   }, [targetDate])
 
@@ -158,7 +160,7 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
         { label: 'Secs', value: timeLeft.seconds }
       ].map((item, idx) => (
         <div key={idx} className="flex flex-col">
-          <span className="text-2xl md:text-4xl font-bold font-serif text-brand-gold tabular-nums">
+          <span className="text-2xl md:text-4xl font-bold font-serif text-secondary tabular-nums">
             {item.value.toString().padStart(2, '0')}
           </span>
           <span className="text-[10px] md:text-xs uppercase tracking-widest text-white/60">
@@ -192,34 +194,34 @@ export default function EventsPage() {
         <PageHero
           title="Events & Programmes"
           subtitle="Gathering together to worship, learn, and impact our world."
-          className="min-h-[50vh]"
+          className="min-h-[75vh]"
         />
       </div>
 
       {/* 2. Featured Event (Highlight) */}
-      <section className="relative z-20 -mt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
-        <div className="bg-brand-navy rounded-3xl shadow-2xl overflow-hidden border border-white/10 relative group">
+      <section className="relative z-20 -mt-40 md:-mt-60 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
+        <div className="bg-primary rounded-3xl shadow-2xl overflow-hidden border border-white/10 relative group">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 bg-[url('/events/conference-bg.jpg')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity duration-700" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent" />
 
           <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
             <div className="flex-1 space-y-6 text-center md:text-left">
-              <Badge className="bg-brand-gold text-brand-navy hover:bg-brand-gold-accent border-none px-3 py-1 text-sm font-bold uppercase tracking-wider animate-pulse">
+              <Badge className="bg-secondary text-primary hover:bg-secondary-accent border-none px-3 py-1 text-xs font-bold uppercase tracking-wider animate-pulse">
                 Upcoming Major Event
               </Badge>
 
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
+              <h2 className="font-serif text-2xl md:text-4xl font-bold text-white leading-tight">
                 {featuredEvent.title}
               </h2>
 
               <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-white/80 justify-center md:justify-start">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-brand-gold" />
+                  <Calendar className="w-5 h-5 text-secondary" />
                   <span>{new Date(featuredEvent.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-brand-gold" />
+                  <MapPin className="w-5 h-5 text-secondary" />
                   <span>{featuredEvent.venue}</span>
                 </div>
               </div>
@@ -229,10 +231,10 @@ export default function EventsPage() {
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
-                <Button size="lg" className="bg-brand-gold text-brand-navy hover:bg-brand-gold-accent font-bold">
+                <Button size="lg" className="bg-secondary text-primary hover:bg-secondary-accent font-bold">
                   Register Now
                 </Button>
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10">
                   <CalendarPlus className="w-4 h-4 mr-2" /> Add to Calendar
                 </Button>
               </div>
@@ -241,7 +243,7 @@ export default function EventsPage() {
             {/* Countdown */}
             <div className="flex-shrink-0 bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10">
               <div className="text-center mb-4">
-                <span className="text-sm font-bold text-brand-gold uppercase tracking-widest">Event Starts In</span>
+                <span className="text-sm font-bold text-secondary uppercase tracking-widest">Event Starts In</span>
               </div>
               <CountdownTimer targetDate={`${featuredEvent.date}T${featuredEvent.time}`} />
             </div>
@@ -263,7 +265,7 @@ export default function EventsPage() {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 border",
                     selectedCategory === cat
-                      ? "bg-brand-navy text-white border-brand-navy shadow-md"
+                      ? "bg-primary text-white border-primary shadow-md"
                       : "bg-transparent text-muted-foreground border-transparent hover:bg-gray-100"
                   )}
                 >
@@ -287,13 +289,13 @@ export default function EventsPage() {
               <div className="flex bg-gray-100 rounded-full p-1">
                 <button
                   onClick={() => setView('upcoming')}
-                  className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", view === 'upcoming' ? "bg-white text-brand-navy shadow-sm" : "text-muted-foreground")}
+                  className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", view === 'upcoming' ? "bg-white text-primary shadow-sm" : "text-muted-foreground")}
                 >
                   Upcoming
                 </button>
                 <button
                   onClick={() => setView('past')}
-                  className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", view === 'past' ? "bg-white text-brand-navy shadow-sm" : "text-muted-foreground")}
+                  className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", view === 'past' ? "bg-white text-primary shadow-sm" : "text-muted-foreground")}
                 >
                   Past
                 </button>
@@ -307,7 +309,7 @@ export default function EventsPage() {
       <section className="py-8 bg-gray-50/50 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-brand-navy">December 2025</h3>
+            <h3 className="font-bold text-primary">December 2025</h3>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon" className="h-8 w-8"><ChevronLeft className="w-4 h-4" /></Button>
               <Button variant="ghost" size="icon" className="h-8 w-8"><ChevronRight className="w-4 h-4" /></Button>
@@ -321,12 +323,12 @@ export default function EventsPage() {
               return (
                 <div key={i} className={cn(
                   "flex flex-col items-center p-2 rounded-xl cursor-pointer transition-all hover:bg-white hover:shadow-sm border border-transparent",
-                  isToday && "bg-brand-navy text-white shadow-md",
-                  !isToday && hasEvent && "bg-brand-gold/10 border-brand-gold/30"
+                  isToday && "bg-primary text-white shadow-md",
+                  !isToday && hasEvent && "bg-secondary/10 border-secondary/30"
                 )}>
                   <span className="text-[10px] uppercase font-bold opacity-60">{date.toLocaleDateString('en-US', { weekday: 'short' })}</span>
                   <span className="text-lg font-bold">{date.getDate()}</span>
-                  {hasEvent && <div className="w-1.5 h-1.5 rounded-full bg-brand-gold mt-1" />}
+                  {hasEvent && <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-1" />}
                 </div>
               )
             })}
@@ -349,28 +351,28 @@ export default function EventsPage() {
                   </div>
 
                   <div className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm rounded-lg p-2 text-center min-w-[60px] shadow-lg">
-                    <span className="block text-xs font-bold text-brand-navy uppercase">{new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}</span>
-                    <span className="block text-xl font-bold text-brand-navy">{new Date(event.date).getDate()}</span>
+                    <span className="block text-xs font-bold text-primary uppercase">{new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}</span>
+                    <span className="block text-xl font-bold text-primary">{new Date(event.date).getDate()}</span>
                   </div>
 
-                  <Badge className="absolute top-4 right-4 z-20 bg-brand-navy/80 backdrop-blur-sm border-none text-white">
+                  <Badge className="absolute top-4 right-4 z-20 bg-primary/80 backdrop-blur-sm border-none text-white">
                     {event.category}
                   </Badge>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="font-serif text-xl font-bold text-brand-navy mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-primary mb-3 group-hover:text-primary transition-colors">
                     {event.title}
                   </h3>
 
                   <div className="space-y-2 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-brand-gold" />
+                      <Clock className="w-4 h-4 text-secondary" />
                       <span>{event.time}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-brand-gold" />
+                      <MapPin className="w-4 h-4 text-secondary" />
                       <span>{event.venue}</span>
                     </div>
                   </div>
@@ -382,36 +384,36 @@ export default function EventsPage() {
                   <div className="mt-auto pt-4 border-t border-gray-100">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button className="w-full bg-white border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white group-hover:bg-brand-navy group-hover:text-white transition-all">
+                        <Button className="w-full bg-white border border-primary text-primary hover:bg-primary hover:text-white group-hover:bg-primary group-hover:text-white transition-all">
                           View Details
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden">
-                        <div className="relative h-48 bg-brand-navy">
+                        <div className="relative h-48 bg-primary">
                           <div className="absolute inset-0 bg-[url('/events/modal-bg.jpg')] bg-cover bg-center opacity-50" />
                           <div className="absolute bottom-0 left-0 p-6 text-white">
-                            <Badge className="bg-brand-gold text-brand-navy mb-2">{event.category}</Badge>
+                            <Badge className="bg-secondary text-primary mb-2">{event.category}</Badge>
                             <h2 className="font-serif text-2xl font-bold">{event.title}</h2>
                           </div>
                         </div>
                         <div className="p-6 space-y-4">
                           <div className="grid grid-cols-2 gap-4">
                             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                              <Calendar className="w-5 h-5 text-brand-navy" />
+                              <Calendar className="w-5 h-5 text-primary" />
                               <div>
                                 <p className="text-xs text-muted-foreground">Date</p>
                                 <p className="font-semibold text-sm">{new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                              <Clock className="w-5 h-5 text-brand-navy" />
+                              <Clock className="w-5 h-5 text-primary" />
                               <div>
                                 <p className="text-xs text-muted-foreground">Time</p>
                                 <p className="font-semibold text-sm">{event.time}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg col-span-2">
-                              <MapPin className="w-5 h-5 text-brand-navy" />
+                              <MapPin className="w-5 h-5 text-primary" />
                               <div>
                                 <p className="text-xs text-muted-foreground">Venue</p>
                                 <p className="font-semibold text-sm">{event.venue}</p>
@@ -420,7 +422,7 @@ export default function EventsPage() {
                           </div>
 
                           <div className="space-y-2">
-                            <h4 className="font-bold text-brand-navy">About This Event</h4>
+                            <h4 className="font-bold text-primary">About This Event</h4>
                             <p className="text-muted-foreground text-sm leading-relaxed">
                               {event.description} Join us for a transformative experience. We believe God is going to move mightily. Invite your friends and family!
                             </p>
@@ -430,7 +432,7 @@ export default function EventsPage() {
                             <Button variant="outline" className="w-full sm:w-auto">
                               <Share2 className="w-4 h-4 mr-2" /> Share
                             </Button>
-                            <Button className="w-full sm:w-auto bg-brand-navy text-white hover:bg-brand-navy/90">
+                            <Button className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90">
                               <CalendarPlus className="w-4 h-4 mr-2" /> Add to Calendar
                             </Button>
                           </DialogFooter>
@@ -446,7 +448,7 @@ export default function EventsPage() {
       </section>
 
       {/* 6. Yearly Events Overview */}
-      <section className="py-20 bg-brand-navy text-white overflow-hidden relative">
+      <section className="py-20 bg-primary text-white overflow-hidden relative">
         <div className="absolute inset-0 bg-[url('/pattern-bg.png')] opacity-5" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -457,10 +459,10 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {yearlyOverview.map((q, idx) => (
               <div key={idx} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-brand-gold text-brand-navy flex items-center justify-center font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-secondary text-primary flex items-center justify-center font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
                   {q.quarter}
                 </div>
-                <h3 className="font-serif text-2xl font-bold mb-6 mt-2 text-brand-gold">{q.title}</h3>
+                <h3 className="font-serif text-2xl font-bold mb-6 mt-2 text-secondary">{q.title}</h3>
                 <ul className="space-y-3">
                   {q.events.map((ev, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-white/80">
@@ -476,20 +478,20 @@ export default function EventsPage() {
       </section>
 
       {/* 9. Testimony Ribbon */}
-      <section className="py-16 bg-brand-gold/10">
+      <section className="py-16 bg-secondary/10">
         <div className="container mx-auto px-4">
           <Carousel className="w-full max-w-4xl mx-auto">
             <CarouselContent>
               {testimonies.map((t, i) => (
                 <CarouselItem key={i}>
                   <div className="text-center px-4 md:px-12">
-                    <div className="flex justify-center mb-6 text-brand-gold">
+                    <div className="flex justify-center mb-6 text-secondary">
                       {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-5 h-5 fill-current" />)}
                     </div>
-                    <blockquote className="font-serif text-xl md:text-2xl text-brand-navy mb-6 leading-relaxed">
+                    <blockquote className="font-serif text-xl md:text-2xl text-primary mb-6 leading-relaxed">
                       "{t.text}"
                     </blockquote>
-                    <cite className="not-italic font-bold text-brand-navy/70 block">
+                    <cite className="not-italic font-bold text-primary/70 block">
                       — {t.author}
                     </cite>
                   </div>
@@ -497,8 +499,8 @@ export default function EventsPage() {
               ))}
             </CarouselContent>
             <div className="hidden md:block">
-              <CarouselPrevious className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white" />
-              <CarouselNext className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white" />
+              <CarouselPrevious className="border-primary/20 text-primary hover:bg-primary hover:text-white" />
+              <CarouselNext className="border-primary/20 text-primary hover:bg-primary hover:text-white" />
             </div>
           </Carousel>
         </div>
@@ -506,7 +508,7 @@ export default function EventsPage() {
 
       {/* 10. Final CTA */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-navy to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-black" />
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
 
         <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl">
@@ -518,7 +520,7 @@ export default function EventsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Input placeholder="Enter your email address" className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12" />
-            <Button size="lg" className="bg-brand-gold text-brand-navy hover:bg-brand-gold-accent h-12 font-bold">
+            <Button size="lg" className="bg-secondary text-primary hover:bg-secondary-accent h-12 font-bold">
               Subscribe
             </Button>
           </div>

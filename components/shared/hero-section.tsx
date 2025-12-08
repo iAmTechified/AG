@@ -64,7 +64,7 @@ export default function HeroSection() {
             {/* Background Video with Parallax */}
             <div
                 className="absolute inset-0 z-0"
-                style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+                style={{ transform: `translateY(${scrollY * 0.1}px)` }}
             >
                 <video
                     ref={videoRef}
@@ -130,32 +130,21 @@ export default function HeroSection() {
                         className="bg-secondary hover:bg-secondary-accent text-brand-navy font-bold text-base h-14 px-8 shadow-[0_0_20px_rgba(212,165,55,0.3)] hover:shadow-[0_0_30px_rgba(212,165,55,0.5)] transition-all duration-300 transform hover:-translate-y-1"
                         asChild
                     >
-                        <Link href={isSundayMorning ? "/live" : "/visit"}>
+                        <Link href={isSundayMorning ? "/" : "/sermon"}>
                             {isSundayMorning ? (
                                 <>
                                     <Play className="h-5 w-5 fill-current" /> Watch Live
                                 </>
                             ) : (
                                 <>
-                                    <Calendar className="h-5 w-8" /> Worship With Us
+                                    <Play className="h-5 w-8" /> Watch Sermon
                                 </>
                             )}
                         </Link>
                     </Button>
 
-                    {/* Secondary CTA 1 */}
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        className="border-secondary/30 bg-white/5 text-white hover:bg-white/10 hover:border-white hover:text-secondary font-semibold text-base h-14 px-8 backdrop-blur-sm transition-all duration-300"
-                        asChild
-                    >
-                        <Link href="/sermons">
-                            <Play className="h-4 w-4" /> Watch Sermons
-                        </Link>
-                    </Button>
 
-                    {/* Secondary CTA 2 */}
+                    {/* Secondary CTA 1 */}
                     
             <GivingModal>
                     <Button
@@ -188,13 +177,13 @@ export default function HeroSection() {
                 </button>
 
                 {/* Scroll Indicator */}
-                <div className="absolute left-1/2 -translate-x-1/2 bottom-8 flex flex-col items-center gap-2 animate-bounce opacity-50">
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-5 flex flex-col items-center gap-2 animate-bounce opacity-50">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-white/60">Scroll</span>
                     <ChevronDown className="w-4 h-4 text-white" />
                 </div>
 
                 {/* Social / Extra (Placeholder for balance) */}
-                <div className="hidden sm:block w-[100px]"></div>
+                <div className="hidden sm:block w-[100px] h-[20px] border border-white bg-black backdrop-blur-md"></div>
             </div>
 
             {/* Hidden Audio Element */}

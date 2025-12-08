@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
-      <body className="font-sans antialiased scroll-smooth">
+      <body className="font-sans antialiased scroll-smooth overflow-x-hidden">
         <Header />
         <main className="min-h-screen">
           {children}

@@ -39,7 +39,7 @@ export default function Header() {
   }, [scrolled])
 
   return (
-    <header className={`${scrolled ? 'sticky' : 'absolute'} top-0 z-50 w-full border-b border-border/40 transition-colors duration-300 ${scrolled ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : 'bg-transparent text-white'}`}>
+    <header className={`${scrolled ? 'sticky' : 'absolute'} absolute top-0 z-50 w-full border-b border-border/40 transition-colors duration-300 ${scrolled || mobileMenuOpen ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : 'bg-transparent text-white'}`}>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -105,24 +105,26 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-2 text-sm font-medium text-foreground hover:text-secondary hover:font-bold transition-colors"
+                className="block px-3 py-2 text-base font-semibold text-foreground hover:text-secondary hover:font-bold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
+            <div className="flex items-center justify-center gap-4 mt-4 w-full">
             <GivingModal>
-              <Button variant="default" className="cursor-pointer w-full mt-2 bg-brand-gold hover:bg-brand-gold-accent">
+              <Button variant="default" className="flex-1 cursor-pointer bg-brand-gold hover:bg-brand-gold-accent py-4">
                 Give Now
               </Button>
             </GivingModal>
-            <Button asChild variant="outline" className={`bg-transparent hover:border-brand-gold-accent hover:bg-transparent hover:text-brand-gold-accent ${scrolled ? 'border-primary' : 'border-white'}`}>
+            <Button asChild variant="outline" className={`flex-1 bg-transparent hover:border-brand-gold-accent hover:bg-transparent hover:text-brand-gold-accent py-4 ${scrolled || mobileMenuOpen ? 'border-primary' : 'border-white'}`}>
               <Link href="/sermons">Watch Sermons</Link>
             </Button>
-            <div className="flex items-center justify-center gap-4 pt-4">
+            </div>
+            <div className="flex items-center justify-center gap-4 pt-4 mb-4">
               {socialLinks.map(link => (
-                <Link key={link.href} href={link.href} className="text-foreground hover:text-secondary hover:font-bold transition-colors">
-                  <link.icon size={24} />
+                <Link key={link.href} href={link.href} className="rounded-full bg-primary p-2 text-white hover:bg-primary/80 hover:text-secondary hover:font-bold transition-colors">
+                  <link.icon size={16} />
                 </Link>
               ))}
             </div>

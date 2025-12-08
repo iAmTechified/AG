@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram } from 'lucide-react'
+import GivingModal from '../shared/giving-modal'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -34,8 +35,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm opacity-90">
               <li><Link href="/about" className="hover:text-secondary transition-colors">About Us</Link></li>
               <li><Link href="/sermons" className="hover:text-secondary transition-colors">Sermons</Link></li>
-              <li><Link href="/programmes" className="hover:text-secondary transition-colors">Programmes</Link></li>
-              <li><Link href="/calendar" className="hover:text-secondary transition-colors">Calendar</Link></li>
+              <li><Link href="/programmes" className="hover:text-secondary transition-colors">Events</Link></li>
             </ul>
           </div>
 
@@ -43,21 +43,35 @@ export default function Footer() {
           <div>
             <h4 className="font-serif font-bold text-sm mb-4">Give</h4>
             <ul className="space-y-2 text-sm opacity-90">
-              <li><Link href="/giving/donations" className="hover:text-secondary transition-colors">Donations</Link></li>
-              <li><Link href="/giving/tithe" className="hover:text-secondary transition-colors">Tithe</Link></li>
-              <li><Link href="/giving/offering" className="hover:text-secondary transition-colors">Offering</Link></li>
-              <li><Link href="/giving/seed-sowing" className="hover:text-secondary transition-colors">Seed Sowing</Link></li>
+              <li>
+                <GivingModal>
+                <Link href="#" className="hover:text-secondary transition-colors">Donations</Link>
+                </GivingModal>
+                </li>
+              <li>
+                <GivingModal>
+                <Link href="#" className="hover:text-secondary transition-colors">Tithe</Link>
+                </GivingModal>
+                </li>
+              <li>
+                <GivingModal>
+                <Link href="#" className="hover:text-secondary transition-colors">Offering</Link>
+                </GivingModal>
+                </li>
+              <li>
+                <GivingModal>
+                <Link href="#" className="hover:text-secondary transition-colors">Seed Sowing</Link>
+                </GivingModal>
+                </li>
             </ul>
           </div>
 
           {/* Social */}
           <div>
-            <h4 className="font-serif font-bold text-sm mb-4">Follow Us</h4>
+            <h4 className="font-serif font-bold text-sm mb-4">Follow Us on Facebook</h4>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-secondary transition-colors"><Facebook size={20} /></a>
-              <a href="#" className="hover:text-secondary transition-colors"><Twitter size={20} /></a>
-              <a href="#" className="hover:text-secondary transition-colors"><Instagram size={20} /></a>
-            </div>
+              <a href="#" className="hover:text-secondary transition-colors flex items-center"><Facebook size={20} /> <span className="ml-2 text-xs">Assemblies of God Church<br /> Citadel of Transformation</span></a>
+            </div> 
           </div>
         </div>
 

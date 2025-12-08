@@ -59,17 +59,17 @@ export default function SermonsPage() {
         <PageHero
           title="Sermons & Messages"
           subtitle="Dive deep into the Word of God. Watch, listen, and be transformed."
-          className="min-h-[60vh] md:min-h-[70vh]"
+          className="min-h-[70vh] md:min-h-[70vh]"
         />
       </div>
 
       {/* 2. Featured Sermon (Overlapping Card) */}
-      <div className="relative z-20 -mt-60 md:-mt-70 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
+      <div className="relative z-20 -mt-50 md:-mt-70 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-border/50 flex flex-col lg:flex-row group">
           {/* Thumbnail / Video Area */}
           <div className="lg:w-3/5 relative min-h-[300px] lg:min-h-[450px] bg-gray-900 overflow-hidden">
             {/* Placeholder for Video/Image */}
-            <div className="absolute inset-0 bg-[url('/sermon-placeholder.jpg')] bg-cover bg-center opacity-80 group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-[url('/IMG11.jpg')] bg-cover bg-center opacity-80 group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
 
             {/* Play Button */}
@@ -88,8 +88,8 @@ export default function SermonsPage() {
 
           {/* Content Area */}
           <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-white relative">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Play className="w-40 h-40" />
+            <div className="absolute -top-20 -right-20 p-4 opacity-1">
+              <Play className="w-60 h-60" />
             </div>
 
             <div className="relative z-10 space-y-6">
@@ -105,6 +105,13 @@ export default function SermonsPage() {
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
                   {/* Preacher Avatar Placeholder */}
+                  <Image
+                    src="/pastor.jpg"
+                    alt="Preacher"
+                    width={100}
+                    height={100}
+                    className="object-cover object-top w-full h-full"
+                  />
                 </div>
                 <div>
                   <p className="font-bold text-primary">{featuredSermon.preacher}</p>
@@ -311,7 +318,7 @@ export default function SermonsPage() {
             <Button size="lg" className="bg-secondary text-primary hover:bg-secondary-accent h-14 px-8 text-lg font-bold shadow-[0_0_20px_rgba(212,165,55,0.3)]">
               Plan Your Visit
             </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 h-14 px-8 text-lg backdrop-blur-sm">
+            <Button size="lg" variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 h-14 px-8 text-lg backdrop-blur-sm">
               Subscribe to Podcast
             </Button>
           </div>

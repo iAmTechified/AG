@@ -68,7 +68,7 @@ export default function EventsCarousel() {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full overflow-x-hidden"
         >
           <CarouselContent>
             {upcomingEvents.map((event) => (
